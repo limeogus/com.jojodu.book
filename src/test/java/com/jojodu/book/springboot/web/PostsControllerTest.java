@@ -75,9 +75,7 @@ public class PostsControllerTest {
         PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder().title(expectedTitle).content(expectedContect).build();
 
         String url = "http://localhost:" + port + "/api/v1/posts/" +updatedId;
-
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
-
         ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
 
         //then
@@ -87,7 +85,6 @@ public class PostsControllerTest {
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         assertThat(all.get(0).getContent()).isEqualTo(expectedContect);
-
 
     }
 }
